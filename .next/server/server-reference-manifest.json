@@ -1,0 +1,16 @@
+{
+  "node": {
+    "a129f7e43fd83cf004f34d1a828e0bcb2c01ea58": {
+      "workers": {
+        "app/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fcustomers%2Fremos-react%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fapp-router%2Fserver-actions.js%22%2C%5B%22invalidateCacheAction%22%5D%5D%5D&__client_imported__=true!",
+        "app/home-2/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fcustomers%2Fremos-react%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fapp-router%2Fserver-actions.js%22%2C%5B%22invalidateCacheAction%22%5D%5D%5D&__client_imported__=true!"
+      },
+      "layer": {
+        "app/page": "action-browser",
+        "app/home-2/page": "action-browser"
+      }
+    }
+  },
+  "edge": {},
+  "encryptionKey": "KwOG7P5AVM1CYBhFWuEFcf04NB1CsZZ9avcEz2Fzzvk="
+}
