@@ -5,11 +5,16 @@ import Link from "next/link"
 import FullScreenButton from '../elements/FullScreenButton'
 import Language from '../elements/Language'
 import { SignOutButton } from "../signout/SignOutButton";
+import { useUser } from '@clerk/nextjs'
+import { findUserByEmail } from '@/app/db/UserRepository'
+import { db } from "@/lib/database/db";
+
 const ThemeSwitch = dynamic(() => import('../elements/ThemeSwitch'), {
     ssr: false,
 })
 
-export default function Header1({ scroll, isMobileMenu, handleSidebar, handleOffcanvas }) {
+export default async function Header1({ scroll, isMobileMenu, handleSidebar, handleOffcanvas, user }) {
+
     return (
         <>
 
@@ -390,8 +395,8 @@ export default function Header1({ scroll, isMobileMenu, handleSidebar, handleOff
                                             <img src="/images/avatar/user-1.png" alt="" />
                                         </span>
                                         <span className="flex flex-column">
-                                            <span className="body-title mb-2">Kristin Watson</span>
-                                            <span className="text-tiny">Admin</span>
+                                            <span className="body-title mb-2">{user && user.firstName}</span>
+                                            <span className="text-tiny">{user && user.orgName}</span>
                                         </span>
                                     </span>
                                 </Menu.Button>

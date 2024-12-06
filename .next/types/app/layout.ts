@@ -1,4 +1,4 @@
-// File: /customers/remos-react/app/layout.js
+// File: /customers/ces-dashboard/app/layout.js
 import * as entry from '../../../app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
