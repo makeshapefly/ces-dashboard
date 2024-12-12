@@ -22,7 +22,7 @@ import Sidebar from './Sidebar'
 
 import { ClerkProvider, SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
 
-export default function Layout({ headerStyle, breadcrumbTitleParent, breadcrumbTitle, children, boxed, menuIconHover, menuIconDefault, user }) {
+export default function Layout({ headerStyle, breadcrumbTitleParent, breadcrumbTitle, attribute, children, boxed, menuIconHover, menuIconDefault, user }) {
     // Moblile Menu
     const [isSidebar, setSidebar] = useState(false)
     const handleSidebar = () => setSidebar(!isSidebar)
@@ -45,7 +45,7 @@ export default function Layout({ headerStyle, breadcrumbTitleParent, breadcrumbT
             <ThemeBackground />
             <MenuBackground />
             <ClearButton2 />
-            <ClerkProvider>
+            
                 <div id="wrapper">
                     <div id="page">
                         <div className={`layout-wrap 
@@ -60,8 +60,8 @@ export default function Layout({ headerStyle, breadcrumbTitleParent, breadcrumbT
                                 <div className="main-content">
                                     <div className="main-content-inner">
                                         <div className="main-content-wrap">
-                                            {breadcrumbTitle && <Breadcrumb breadcrumbTitle={breadcrumbTitle} breadcrumbTitleParent={breadcrumbTitleParent} />}
-                                            <SignedIn />
+                                            {breadcrumbTitle && <Breadcrumb breadcrumbTitle={breadcrumbTitle} breadcrumbTitleParent={breadcrumbTitleParent} attribute={attribute}/>}
+                                            
                                             {children}
                                         </div>
                                     </div>
@@ -72,7 +72,7 @@ export default function Layout({ headerStyle, breadcrumbTitleParent, breadcrumbT
                     </div>
                     <Offcanvas isOffcanvas={isOffcanvas} handleOffcanvas={handleOffcanvas} />
                 </div>
-            </ClerkProvider>
+            
         </>
     )
 }

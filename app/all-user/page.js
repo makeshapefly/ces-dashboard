@@ -1,12 +1,21 @@
 
-import Layout from "@/components/layout/Layout"
+import Layout from '@/components/layout/Layout'
 import Link from "next/link"
-export default function AllUser() {
+import { getAllUsersByOrg } from '@/app/db/UserRepository'
+import GetUser from '@/app/GetUser'
+import { db } from "@/lib/database/db";
+import { UserDelete } from '@/components/buttons/UserDelete'
+
+export default async function AllUser() {
+
+    const webUser = await GetUser()
+
+    const users = await getAllUsersByOrg(db, webUser.organisation)
 
     return (
         <>
 
-            <Layout breadcrumbTitleParent="User" breadcrumbTitle="All User">
+            <Layout breadcrumbTitleParent="User" breadcrumbTitle="All Users" attribute="All users" user={webUser}>
                 <div className="wg-box">
                     <div className="flex items-center justify-between gap10 flex-wrap">
                         <div className="wg-filter flex-grow">
@@ -24,259 +33,42 @@ export default function AllUser() {
                     <div className="wg-table table-all-user">
                         <ul className="table-title flex gap20 mb-14">
                             <li>
-                                <div className="body-title">User</div>
+                                <div className="body-title">Name</div>
                             </li>
-                            <li>
-                                <div className="body-title">Phone</div>
-                            </li>
-                            <li>
-                                <div className="body-title">Email</div>
-                            </li>
+
                             <li>
                                 <div className="body-title">Action</div>
                             </li>
                         </ul>
                         <ul className="flex flex-column">
-                            <li className="user-item gap14">
-                                <div className="image">
-                                    <img src="/images/avatar/user-6.png" alt="" />
-                                </div>
-                                <div className="flex items-center justify-between gap20 flex-grow">
-                                    <div className="name">
-                                        <Link href="#" className="body-title-2">Kristin Watson</Link>
-                                        <div className="text-tiny mt-3">Product name</div>
-                                    </div>
-                                    <div className="body-text">$1,452.500</div>
-                                    <div className="body-text">1,638</div>
-                                    <div className="list-icon-function">
-                                        <div className="item eye">
-                                            <i className="icon-eye" />
+                            {users.map(function (user, i) {
+                                return (
+                                    <li className="user-item gap14">
+                                        <div className="image">
+                                            <img src="/images/avatar/user-6.png" alt="" />
                                         </div>
-                                        <div className="item edit">
-                                            <i className="icon-edit-3" />
+                                        <div className="flex items-center justify-between gap20 flex-grow">
+                                            <div className="name">
+                                                <Link href="#" className="body-title-2">{user.first_name} {user.last_name}</Link>
+                                                <div className="text-tiny mt-3">Admin</div>
+                                            </div>
+                                            <div className="body-text">{user.email}</div>
+
+                                            <div className="list-icon-function">
+                                                <div className="item eye">
+                                                    <i className="icon-eye" />
+                                                </div>
+                                                <div className="item edit">
+                                                    <i className="icon-edit-3" />
+                                                </div>
+                                                <div className="item trash">
+                                                    <UserDelete user={user.id}/>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div className="item trash">
-                                            <i className="icon-trash-2" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li className="user-item gap14">
-                                <div className="image">
-                                    <img src="/images/avatar/user-7.png" alt="" />
-                                </div>
-                                <div className="flex items-center justify-between gap20 flex-grow">
-                                    <div className="name">
-                                        <Link href="#" className="body-title-2">Kristin Watson</Link>
-                                        <div className="text-tiny mt-3">Product name</div>
-                                    </div>
-                                    <div className="body-text">$1,452.500</div>
-                                    <div className="body-text">1,638</div>
-                                    <div className="list-icon-function">
-                                        <div className="item eye">
-                                            <i className="icon-eye" />
-                                        </div>
-                                        <div className="item edit">
-                                            <i className="icon-edit-3" />
-                                        </div>
-                                        <div className="item trash">
-                                            <i className="icon-trash-2" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li className="user-item gap14">
-                                <div className="image">
-                                    <img src="/images/avatar/user-8.png" alt="" />
-                                </div>
-                                <div className="flex items-center justify-between gap20 flex-grow">
-                                    <div className="name">
-                                        <Link href="#" className="body-title-2">Kristin Watson</Link>
-                                        <div className="text-tiny mt-3">Product name</div>
-                                    </div>
-                                    <div className="body-text">$1,452.500</div>
-                                    <div className="body-text">1,638</div>
-                                    <div className="list-icon-function">
-                                        <div className="item eye">
-                                            <i className="icon-eye" />
-                                        </div>
-                                        <div className="item edit">
-                                            <i className="icon-edit-3" />
-                                        </div>
-                                        <div className="item trash">
-                                            <i className="icon-trash-2" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li className="user-item gap14">
-                                <div className="image">
-                                    <img src="/images/avatar/user-9.png" alt="" />
-                                </div>
-                                <div className="flex items-center justify-between gap20 flex-grow">
-                                    <div className="name">
-                                        <Link href="#" className="body-title-2">Kristin Watson</Link>
-                                        <div className="text-tiny mt-3">Product name</div>
-                                    </div>
-                                    <div className="body-text">$1,452.500</div>
-                                    <div className="body-text">1,638</div>
-                                    <div className="list-icon-function">
-                                        <div className="item eye">
-                                            <i className="icon-eye" />
-                                        </div>
-                                        <div className="item edit">
-                                            <i className="icon-edit-3" />
-                                        </div>
-                                        <div className="item trash">
-                                            <i className="icon-trash-2" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li className="user-item gap14">
-                                <div className="image">
-                                    <img src="/images/avatar/user-10.png" alt="" />
-                                </div>
-                                <div className="flex items-center justify-between gap20 flex-grow">
-                                    <div className="name">
-                                        <Link href="#" className="body-title-2">Kristin Watson</Link>
-                                        <div className="text-tiny mt-3">Product name</div>
-                                    </div>
-                                    <div className="body-text">$1,452.500</div>
-                                    <div className="body-text">1,638</div>
-                                    <div className="list-icon-function">
-                                        <div className="item eye">
-                                            <i className="icon-eye" />
-                                        </div>
-                                        <div className="item edit">
-                                            <i className="icon-edit-3" />
-                                        </div>
-                                        <div className="item trash">
-                                            <i className="icon-trash-2" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li className="user-item gap14">
-                                <div className="image">
-                                    <img src="/images/avatar/user-11.png" alt="" />
-                                </div>
-                                <div className="flex items-center justify-between gap20 flex-grow">
-                                    <div className="name">
-                                        <Link href="#" className="body-title-2">Kristin Watson</Link>
-                                        <div className="text-tiny mt-3">Product name</div>
-                                    </div>
-                                    <div className="body-text">$1,452.500</div>
-                                    <div className="body-text">1,638</div>
-                                    <div className="list-icon-function">
-                                        <div className="item eye">
-                                            <i className="icon-eye" />
-                                        </div>
-                                        <div className="item edit">
-                                            <i className="icon-edit-3" />
-                                        </div>
-                                        <div className="item trash">
-                                            <i className="icon-trash-2" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li className="user-item gap14">
-                                <div className="image">
-                                    <img src="/images/avatar/user-12.png" alt="" />
-                                </div>
-                                <div className="flex items-center justify-between gap20 flex-grow">
-                                    <div className="name">
-                                        <Link href="#" className="body-title-2">Kristin Watson</Link>
-                                        <div className="text-tiny mt-3">Product name</div>
-                                    </div>
-                                    <div className="body-text">$1,452.500</div>
-                                    <div className="body-text">1,638</div>
-                                    <div className="list-icon-function">
-                                        <div className="item eye">
-                                            <i className="icon-eye" />
-                                        </div>
-                                        <div className="item edit">
-                                            <i className="icon-edit-3" />
-                                        </div>
-                                        <div className="item trash">
-                                            <i className="icon-trash-2" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li className="user-item gap14">
-                                <div className="image">
-                                    <img src="/images/avatar/user-13.png" alt="" />
-                                </div>
-                                <div className="flex items-center justify-between gap20 flex-grow">
-                                    <div className="name">
-                                        <Link href="#" className="body-title-2">Kristin Watson</Link>
-                                        <div className="text-tiny mt-3">Product name</div>
-                                    </div>
-                                    <div className="body-text">$1,452.500</div>
-                                    <div className="body-text">1,638</div>
-                                    <div className="list-icon-function">
-                                        <div className="item eye">
-                                            <i className="icon-eye" />
-                                        </div>
-                                        <div className="item edit">
-                                            <i className="icon-edit-3" />
-                                        </div>
-                                        <div className="item trash">
-                                            <i className="icon-trash-2" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li className="user-item gap14">
-                                <div className="image">
-                                    <img src="/images/avatar/user-14.png" alt="" />
-                                </div>
-                                <div className="flex items-center justify-between gap20 flex-grow">
-                                    <div className="name">
-                                        <Link href="#" className="body-title-2">Kristin Watson</Link>
-                                        <div className="text-tiny mt-3">Product name</div>
-                                    </div>
-                                    <div className="body-text">$1,452.500</div>
-                                    <div className="body-text">1,638</div>
-                                    <div className="list-icon-function">
-                                        <div className="item eye">
-                                            <i className="icon-eye" />
-                                        </div>
-                                        <div className="item edit">
-                                            <i className="icon-edit-3" />
-                                        </div>
-                                        <div className="item trash">
-                                            <i className="icon-trash-2" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li className="user-item gap14">
-                                <div className="image">
-                                    <img src="/images/avatar/user-15.png" alt="" />
-                                </div>
-                                <div className="flex items-center justify-between gap20 flex-grow">
-                                    <div className="name">
-                                        <Link href="#" className="body-title-2">Kristin Watson</Link>
-                                        <div className="text-tiny mt-3">Product name</div>
-                                    </div>
-                                    <div className="body-text">$1,452.500</div>
-                                    <div className="body-text">1,638</div>
-                                    <div className="list-icon-function">
-                                        <div className="item eye">
-                                            <i className="icon-eye" />
-                                        </div>
-                                        <div className="item edit">
-                                            <i className="icon-edit-3" />
-                                        </div>
-                                        <div className="item trash">
-                                            <i className="icon-trash-2" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
+                                    </li>
+                                )
+                            })}
                         </ul>
                     </div>
                     <div className="divider" />

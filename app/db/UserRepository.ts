@@ -16,6 +16,20 @@ export async function findUserByEmail(
     return user
 }
 
+export async function getAllUsersByOrg(
+    db: Kysely<Database>,
+    org: number
+): Promise<User[] | undefined> {
+    const user = await db
+        .selectFrom('users')
+        .selectAll()
+        .where('organisation', '=', org)
+        .execute()
+
+    return user
+}
+
+/* create user after first sign-in/sign-up */
 export async function insertUser(
     db: Kysely<Database>,
     user: NewUser
@@ -27,4 +41,13 @@ export async function insertUser(
         .executeTakeFirstOrThrow()
 
     return insertedUser
+}
+
+export async function deleteUserById(db: Kysely<Database>, id: string) {
+    const result = await db
+        .deleteFrom('users')
+        .where('id', '=', id)
+        .executeTakeFirst()
+    
+    return result.numDeletedRows
 }

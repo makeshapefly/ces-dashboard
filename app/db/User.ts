@@ -18,6 +18,6 @@ export function userToWebUser(user: any): WebUser {
         email: user.email,
         createdAt: user.created_at,
         organisation: user.organisation,
-        orgName: user.org_name
+        orgName: user.org_name ? user.org_name : 'NONE'
     }
 }
