@@ -1,4 +1,5 @@
 import { Kysely } from 'kysely'
+import { expressionBuilder } from 'kysely'
 import { User, NewUser, UserUpdate, Database } from '@/lib/database/types'
 
 export async function findUserByEmail(
@@ -16,7 +17,7 @@ export async function findUserByEmail(
     return user
 }
 
-export async function getAllUsersByOrg(
+/*export async function getAllUsersByOrg(
     db: Kysely<Database>,
     org: number
 ): Promise<User[] | undefined> {
@@ -24,6 +25,25 @@ export async function getAllUsersByOrg(
         .selectFrom('users')
         .selectAll()
         .where('organisation', '=', org)
+        .execute()
+
+    return user
+}*/
+
+export async function getAllUsersByOrg(
+    db: Kysely<Database>,
+    org: number,
+    email: string
+): Promise<User[] | undefined> {
+    const eb = expressionBuilder<Database, 'users'>()
+    const user = await db
+        .selectFrom('users')
+        .selectAll()
+        .where(({ eb }) =>
+            eb('organisation', '=', org).and(
+                eb('email', '!=', email)
+            )
+        )
         .execute()
 
     return user
@@ -48,6 +68,6 @@ export async function deleteUserById(db: Kysely<Database>, id: string) {
         .deleteFrom('users')
         .where('id', '=', id)
         .executeTakeFirst()
-    
+
     return result.numDeletedRows
 }

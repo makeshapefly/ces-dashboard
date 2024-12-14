@@ -4,11 +4,13 @@
       "workers": {
         "app/add-new-user/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fcustomers%2Fces-dashboard%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fapp-router%2Fserver-actions.js%22%2C%5B%22invalidateCacheAction%22%5D%5D%2C%5B%22%2Fcustomers%2Fces-dashboard%2Fapp%2Factions%2FaddUser.js%22%2C%5B%22addUser%22%5D%5D%5D&__client_imported__=true!",
         "app/not-found": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fcustomers%2Fces-dashboard%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fapp-router%2Fserver-actions.js%22%2C%5B%22invalidateCacheAction%22%5D%5D%5D&__client_imported__=true!",
+        "app/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fcustomers%2Fces-dashboard%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fapp-router%2Fserver-actions.js%22%2C%5B%22invalidateCacheAction%22%5D%5D%5D&__client_imported__=true!",
         "app/all-user/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2Fcustomers%2Fces-dashboard%2Fapp%2Factions%2FdeleteUser.js%22%2C%5B%22deleteUser%22%5D%5D%2C%5B%22%2Fcustomers%2Fces-dashboard%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fapp-router%2Fserver-actions.js%22%2C%5B%22invalidateCacheAction%22%5D%5D%5D&__client_imported__=true!"
       },
       "layer": {
         "app/add-new-user/page": "action-browser",
         "app/not-found": "action-browser",
+        "app/page": "action-browser",
         "app/all-user/page": "action-browser"
       }
     },
@@ -30,5 +32,5 @@
     }
   },
   "edge": {},
-  "encryptionKey": "QielinCVL+BG0AMgSVtXLpl3fqNinCee5ERHwnXu5XQ="
+  "encryptionKey": "QwO3nXzAj7mX7SZD5VUKycHIJz7Obq0SJ7bQFqBukh4="
 }

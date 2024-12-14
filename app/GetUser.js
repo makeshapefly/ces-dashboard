@@ -12,6 +12,7 @@ export default async function GetUser() {
     let firstName = clerkUser.firstName
     let lastName = clerkUser.lastName
 
+    /* get saved user in db */
     const user = await findUserByEmail(db, email)
 
     let webUser = null
@@ -25,7 +26,6 @@ export default async function GetUser() {
             created_at: '2024-12-06',
             organisation: 1
         })
-        //console.log("insertedUser: " + JSON.stringify(insertedUser))
         webUser = userToWebUser(insertedUser)
     } else {
         webUser = userToWebUser(user)
@@ -36,9 +36,6 @@ export default async function GetUser() {
     if (role) {
         webUser.role = role.role
     }
-    
-    //console.log("webUser: " + JSON.stringify(webUser))
 
     return webUser
-
 }

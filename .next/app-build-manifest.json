@@ -22,6 +22,11 @@
       "static/css/app/add-new-user/page.css",
       "static/chunks/app/add-new-user/page.js"
     ],
+    "/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/page.js"
+    ],
     "/all-user/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",

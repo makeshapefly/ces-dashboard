@@ -10,7 +10,7 @@ export default async function AllUser() {
 
     const webUser = await GetUser()
 
-    const users = await getAllUsersByOrg(db, webUser.organisation)
+    const users = await getAllUsersByOrg(db, webUser.organisation, webUser.email)
 
     return (
         <>
