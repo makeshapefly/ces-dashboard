@@ -16,22 +16,17 @@
       "static/chunks/main-app.js",
       "static/chunks/app/not-found.js"
     ],
-    "/add-new-user/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/add-new-user/page.css",
-      "static/chunks/app/add-new-user/page.js"
-    ],
-    "/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/page.js"
-    ],
     "/all-user/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/all-user/page.css",
       "static/chunks/app/all-user/page.js"
+    ],
+    "/add-new-user/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/add-new-user/page.css",
+      "static/chunks/app/add-new-user/page.js"
     ]
   }
 }
